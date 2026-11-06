@@ -1,8 +1,21 @@
+from pathlib import Path
 from utils.statistics import calculate_average, find_min, find_max
 from utils.reader import read_numbers
 
 def main():
-    numbers = read_numbers("data/measurements.txt")
+    input_file = Path("data") / "measurements.txt"
+
+    print(Path.cwd())
+
+    if not input_file.exists():
+        print(input_file)
+        return
+
+    logs_dir = Path("logs")
+    logs_dir.mkdir(exist_ok=True)
+
+    numbers = read_numbers(input_file)
+
     srznach=calculate_average(numbers)
     minim=find_min(numbers)
     maxim=find_max(numbers)
