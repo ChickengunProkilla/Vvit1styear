@@ -12,3 +12,7 @@ def find_max(numbers):
     if not numbers:
         return None
     return max(numbers)
+
+def validate_numbers(numbers):
+    if not numbers:
+        raise ValueError("Список измерений пуст")
