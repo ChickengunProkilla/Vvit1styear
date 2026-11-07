@@ -1,5 +1,5 @@
 from pathlib import Path
-from utils.statistics import calculate_average, find_min, find_max
+from utils.statistics import calculate_average, find_min, find_max, validate_numbers
 from utils.reader import read_numbers
 
 def main():
@@ -19,9 +19,10 @@ def main():
     if numbers is None:
         print("не удалось прочитать файл.")
         return
-
-    if not numbers:
-        print("числа отсутствуют")
+    try:
+        validate_numbers(numbers)
+    except ValueError as error:
+        print('Ошибка', error)
         return
 
     srznach=calculate_average(numbers)
