@@ -8,13 +8,21 @@ def main():
     print(Path.cwd())
 
     if not input_file.exists():
-        print(input_file)
+        print("не правильный путь", input_file)
         return
 
     logs_dir = Path("logs")
     logs_dir.mkdir(exist_ok=True)
 
     numbers = read_numbers(input_file)
+
+    if numbers is None:
+        print("не удалось прочитать файл.")
+        return
+
+    if not numbers:
+        print("числа отсутствуют")
+        return
 
     srznach=calculate_average(numbers)
     minim=find_min(numbers)
