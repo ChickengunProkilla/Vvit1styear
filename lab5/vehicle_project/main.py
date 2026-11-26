@@ -1,11 +1,21 @@
-from models.vehicle import vehicle
-def main():
-    v1=vehicle("Dodge", "Charger", 2019)
-    v2=vehicle("Subaru", "Impreza", 2021)
+class Vehicle:
+    def __init__(self, brand, model, year):
+        self.brand=brand
+        self.model=model
+        self.year=year
+        self._speed=0
 
-    v1._speed=250
-    print(v1.brand, v1.model, v1.year, v1._speed)
-    print(v2.brand, v2.model, v2.year, v2._speed)
+    def accelerate(self, value):
+        self._speed+=value
 
-if __name__ == "__main__":
-    main()
+    def brake(self, value):
+        self._speed -= value
+        if self._speed < 0:
+            self._speed = 0
+
+    def stop(self):
+        self._speed = 0
+
+    def get_info(self):
+        return (f"{self.brand} {self.model} ({self.year}), "
+                f"скорость: {self._speed} км/ч")
