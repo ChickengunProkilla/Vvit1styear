@@ -5,6 +5,14 @@ class Vehicle:
         self.year=year
         self._speed=0
 
+    def speed(self):
+        return self._speed
+
+    def speed(self, value):
+        if value<0:
+            raise ValueError("Отрицательная скорость")
+        self._speed=value
+
     def accelerate(self, value):
         self._speed+=value
 
