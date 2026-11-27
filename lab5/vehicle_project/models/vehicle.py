@@ -26,3 +26,5 @@ class Vehicle:
     def get_info(self):
         return (f"{self.brand} {self.model} ({self.year}), "
                 f"скорость: {self.speed} км/ч")
+    def __str__(self):
+        return self.get_info()
